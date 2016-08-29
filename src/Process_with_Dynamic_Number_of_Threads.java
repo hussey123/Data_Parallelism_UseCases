@@ -8,6 +8,9 @@ import java.util.List;
 /**
  * Created by wso2123 on 8/29/16.
  */
+
+//Scenario2
+
 public class Process_with_Dynamic_Number_of_Threads {
 
     String details="";
@@ -58,7 +61,7 @@ public class Process_with_Dynamic_Number_of_Threads {
                         .subscribe(person-> {
                             details="";
                             System.out.println(person[0]+" "+person[1]+" "+person[2]+" "+Thread.currentThread().getName());
-                        });//subscribing and getting the last result
+                        });//subscribing and getting the final result
             }
         }
     }

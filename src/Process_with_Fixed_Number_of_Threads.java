@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
  */
 
 
-//Scenario2
+//Scenario1
 
 public class Process_with_Fixed_Number_of_Threads{
 
@@ -49,7 +49,7 @@ public class Process_with_Fixed_Number_of_Threads{
                 .subscribe(person-> {
                     details="";
                     System.out.println(person[0]+" "+person[1]+" "+person[2]+" ");
-                });//subscribing and getting the last result
+                });//subscribing and getting the final result
     }
 
     //process the payload
