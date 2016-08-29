@@ -48,7 +48,7 @@ public class Process_with_Dynamic_Number_of_Threads {
                         System.out.println(person[0]+" "+person[1]+" "+person[2]+" ");
                     });//subscribing and getting the last result
         }
-        else //if the threads want to be invoked is greater than the threshold value
+        else //if the threads needed is greater than the threshold value
         {
             for(int i=1;i<size;i+=threadPoolSize)
             {
