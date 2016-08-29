@@ -36,12 +36,8 @@ public class Process_with_Dynamic_Number_of_Threads {
         if(size<threadPoolSize)  //invoke threads equal to the amount of size(threshold)
         {
             Observable.from(payLoad) //setting observable
-                    .doOnNext(new Action1<PayLoad>() {//process data
-                        @Override
-                        public void call(PayLoad payLoad) {
-                            details=process(payLoad);          //whole part can be done using the map function instead a callable
-                        }
-                    }).map(infoArray->details.split(" "))//mapping data
+                    .doOnNext(pl->details=process(pl))//processing data
+                    .map(infoArray->details.split(" "))//mapping data
                     .filter(person->person[1].equals("STL"))//filtering data(can done using reduce also)
                     .observeOn(Schedulers.newThread())//executing the tasks on new thread
                     .subscribe(person-> {
@@ -55,12 +51,8 @@ public class Process_with_Dynamic_Number_of_Threads {
             {
                 Observable.from(payLoad) //setting observable
                         .skip(i-1).take(i+threadPoolSize-1) //fixed thread range
-                        .doOnNext(new Action1<PayLoad>() {//process data
-                            @Override
-                            public void call(PayLoad payLoad) {
-                                details=process(payLoad);          //whole part can be done using the map function instead a callable
-                            }
-                        }).map(infoArray->details.split(" "))//mapping data
+                        .doOnNext(pl->details=process(pl))//processing data
+                        .map(infoArray->details.split(" "))//mapping data
                         .filter(person->person[1].equals("STL"))//filtering data(can done using reduce also)
                         .observeOn(Schedulers.newThread())//executing the tasks on new thread
                         .subscribe(person-> {

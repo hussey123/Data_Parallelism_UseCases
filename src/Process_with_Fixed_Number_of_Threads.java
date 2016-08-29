@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
  */
 
 
-//Scenario1
+//Scenario2
 
 public class Process_with_Fixed_Number_of_Threads{
 
@@ -42,18 +42,14 @@ public class Process_with_Fixed_Number_of_Threads{
 
         Observable.from(payLoad) //setting observable
                 .skip(init-1).take(end-init) //determining the fixed thread range
-                    .doOnNext(new Action1<PayLoad>() {//process data
-                        @Override
-                        public void call(PayLoad payLoad) {
-                            details=process(payLoad);          //whole part can be done using the map function instead a callable
-                        }
-                    }).map(infoArray->details.split(" "))//mapping data
-                        .filter(person->person[1].equals("STL"))//filtering data(can done using reduce also)
-                            .observeOn(Schedulers.newThread())//executing the tasks on new thread
-                                .subscribe(person-> {
-                                    details="";
-                                    System.out.println(person[0]+" "+person[1]+" "+person[2]+" ");
-                                });//subscribing and getting the last result
+                .doOnNext(pl->details=process(pl))//process data
+                .map(infoArray->details.split(" "))//mapping data
+                .filter(person->person[1].equals("STL"))//filtering data(can done using reduce also)
+                .observeOn(Schedulers.newThread())//executing the tasks on new thread
+                .subscribe(person-> {
+                    details="";
+                    System.out.println(person[0]+" "+person[1]+" "+person[2]+" ");
+                });//subscribing and getting the last result
     }
 
     //process the payload
