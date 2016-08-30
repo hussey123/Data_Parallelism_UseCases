@@ -16,7 +16,7 @@ public class Process_with_Dynamic_Number_of_Threads {
     String details="";
 
     //payload
-    static List<PayLoad> payLoad= Arrays.asList(
+    private static List<PayLoad> payLoad= Arrays.asList(
             new PayLoad("ChanakaFernando","STL","ESB"),
             new PayLoad("IsuruUdana","TL","ESB"),
             new PayLoad("ShafreenAnfar","STL","ESB"),
@@ -32,7 +32,7 @@ public class Process_with_Dynamic_Number_of_Threads {
 
     }
 
-    void Scenario2Rx(List<PayLoad> payLoad,int threadPoolSize)
+    private void Scenario2Rx(List<PayLoad> payLoad,int threadPoolSize)
     {
         int size=payLoad.size();//get the size for invoke threads
 
@@ -67,7 +67,7 @@ public class Process_with_Dynamic_Number_of_Threads {
     }
 
     //process the payload
-    String process(PayLoad pl)
+    private String process(PayLoad pl)
     {
         return pl.getName()+" "+pl.getPosition()+" "+pl.getTeam();
     }

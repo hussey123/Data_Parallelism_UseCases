@@ -19,7 +19,7 @@ public class Process_with_Fixed_Number_of_Threads{
     String details;
 
     //payload
-    static List<PayLoad> payLoad= Arrays.asList(
+    private static List<PayLoad> payLoad= Arrays.asList(
             new PayLoad("ChanakaFernando","STL","ESB"),
             new PayLoad("IsuruUdana","TL","ESB"),
             new PayLoad("ShafreenAnfar","STL","ESB"),
@@ -37,7 +37,7 @@ public class Process_with_Fixed_Number_of_Threads{
         obj.Scenario1Rx(payLoad,3,payLoad.size());
     }
 
-    void Scenario1Rx(List<PayLoad> payLoad,int init,int end)
+    private void Scenario1Rx(List<PayLoad> payLoad,int init,int end)
     {
 
         Observable.from(payLoad) //setting observable
@@ -53,7 +53,7 @@ public class Process_with_Fixed_Number_of_Threads{
     }
 
     //process the payload
-    String process(PayLoad pl)
+    private String process(PayLoad pl)
     {
         return pl.getName()+" "+pl.getPosition()+" "+pl.getTeam();
     }

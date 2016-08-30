@@ -15,7 +15,7 @@ public class Process_with_an_additional_condition {
     String details;
 
     //payload
-    static List<PayLoad> payLoad= Arrays.asList(
+    private static List<PayLoad> payLoad= Arrays.asList(
             new PayLoad("ChanakaFernando","STL","ESB"),
             new PayLoad("IsuruUdana","TL","ESB"),
             new PayLoad("ShafreenAnfar","STL","ESB"),
@@ -31,7 +31,7 @@ public class Process_with_an_additional_condition {
 
     }
 
-    void Scenario3Rx(List<PayLoad> payLoad)
+    private void Scenario3Rx(List<PayLoad> payLoad)
     {
 
         Observable.from(payLoad) //setting observable
@@ -47,7 +47,7 @@ public class Process_with_an_additional_condition {
     }
 
     //process the payload
-    String process(PayLoad pl)
+    private String process(PayLoad pl)
     {
         return pl.getName()+" "+pl.getPosition()+" "+pl.getTeam();
     }

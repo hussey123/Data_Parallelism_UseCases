@@ -16,7 +16,7 @@ public class Process_and_Aggregate_First_n_responses {
     String details="";
 
     //payload
-    static List<PayLoad> payLoad= Arrays.asList(
+    private static List<PayLoad> payLoad= Arrays.asList(
             new PayLoad("ChanakaFernando","TL","ESB"),
             new PayLoad("IsuruUdana","TL","ESB"),
             new PayLoad("ShafreenAnfar","STL","ESB"),
@@ -29,7 +29,7 @@ public class Process_and_Aggregate_First_n_responses {
         obj.Scenario5Rx(payLoad,2);
     }
 
-    void Scenario5Rx(List<PayLoad> payLoad,int numberofResponses)
+    private void Scenario5Rx(List<PayLoad> payLoad,int numberofResponses)
     {
         Observable.from(payLoad)
                 .doOnNext(pl->details=process(pl))//process data
@@ -44,11 +44,12 @@ public class Process_and_Aggregate_First_n_responses {
     }
 
     //process the payload
-    static String process(PayLoad pl) {
+    private static String process(PayLoad pl) {
 
         try {
             Thread.sleep(new Random().nextInt(1000));
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return pl.getName()+" "+pl.getPosition()+" "+pl.getTeam();
     }
