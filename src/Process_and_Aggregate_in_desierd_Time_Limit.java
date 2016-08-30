@@ -27,7 +27,7 @@ public class Process_and_Aggregate_in_desierd_Time_Limit {
         Process_and_Aggregate_in_desierd_Time_Limit obj=new Process_and_Aggregate_in_desierd_Time_Limit();
 
         //aggregate responses after desired time limit
-        obj.Scenario5Rx(payLoad, 200);
+        obj.Scenario5Rx(payLoad, 90);
 
     }
 
@@ -37,12 +37,12 @@ public class Process_and_Aggregate_in_desierd_Time_Limit {
                     .doOnNext(pl -> details = process(pl))//process data
                     .observeOn(Schedulers.newThread())//executing process in parallel
                     .timeout(waitTime, TimeUnit.MILLISECONDS)//wait for desired limit of time
-                    .onErrorReturn(error->{
-                        System.out.println("Nothing returned;");
-                        return null;
-                    })
                     .map(infoArray -> details.split(" "))//mapping data
                     .filter(person -> person[1].equals("STL"))//filtering data(can done using reduce also)
+                    .onErrorReturn(error->{
+                        System.out.println("Nothing returned;"); //IllegalState Exception error
+                        return new String[3];
+                    })
                     .subscribe(person -> {
                         details = "";
                         System.out.println(person[0] + " " + person[1] + " " + person[2] + " ");
