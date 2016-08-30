@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Process_with_Dynamic_Number_of_Threads {
 
-    String details="";
+    private String details="";
 
     //payload
     private static List<PayLoad> payLoad= Arrays.asList(

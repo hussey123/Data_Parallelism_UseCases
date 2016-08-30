@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Process_with_an_additional_condition {
 
-    String details;
+    private String details;
 
     //payload
     private static List<PayLoad> payLoad= Arrays.asList(

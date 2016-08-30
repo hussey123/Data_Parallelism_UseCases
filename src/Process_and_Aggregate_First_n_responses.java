@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Process_and_Aggregate_First_n_responses {
 
-    String details="";
+    private String details="";
 
     //payload
     private static List<PayLoad> payLoad= Arrays.asList(

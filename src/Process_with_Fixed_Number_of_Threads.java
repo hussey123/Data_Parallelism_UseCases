@@ -1,10 +1,8 @@
 import rx.Observable;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 
 /**
  * Created by wso2123 on 8/29/16.
@@ -16,7 +14,7 @@ import java.util.concurrent.ExecutorService;
 public class Process_with_Fixed_Number_of_Threads{
 
 
-    String details;
+    private String details;
 
     //payload
     private static List<PayLoad> payLoad= Arrays.asList(
@@ -28,8 +26,6 @@ public class Process_with_Fixed_Number_of_Threads{
 
     public static void main(String[] args) {
 
-
-        //initializing object
         Process_with_Fixed_Number_of_Threads obj=new Process_with_Fixed_Number_of_Threads();
 
         //executing Scenario1 using Rx-Java
